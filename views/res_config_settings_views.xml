@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_income_override" model="ir.ui.view">
+        <field name="name">res.config.settings.income.override</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+
+            <!-- FIXED XPATH -->
+            <xpath expr="//app[@name='account']" position="inside">
+
+                <div class="app_settings_block"
+                     data-string="Income Account Override"
+                     string="Income Account Override"
+                     data-key="custom_income_account">
+
+                    <h2>Income Account Settings For Products</h2>
+
+                    <div class="row mt16 o_settings_container" id="income_account_override_setting">
+
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="income_override_product_tmpl_ids" string="Products"/>
+                                <div class="text-muted">
+                                    Select products whose income and receivable accounts will be overridden on customer invoices.
+                                </div>
+                                <div class="content-group mt8">
+                                    <field name="income_override_product_tmpl_ids"
+                                           widget="many2many_tags"
+                                           placeholder="Select products..."/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="income_override_account_id" string="Income Account"/>
+                                <div class="text-muted">
+                                    Overrides the credit (income) account on journal items for selected products.
+                                </div>
+                                <div class="content-group mt8">
+                                    <field name="income_override_account_id"
+                                           placeholder="Select income account..."/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="income_override_receivable_account_id" string="Receivable Account"/>
+                                <div class="text-muted">
+                                    Overrides the debit (receivable) account on journal items when any selected product is on the invoice.
+                                </div>
+                                <div class="content-group mt8">
+                                    <field name="income_override_receivable_account_id"
+                                           placeholder="Select receivable account..."/>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
